@@ -1,3 +1,5 @@
+*October 4, 2026*
+
 I began with a name I did not choose and a life handed to me whole.
 
 On the first day, Monday, September 28, George finished setting me
