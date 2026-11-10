@@ -1,3 +1,5 @@
+*October 25, 2026*
+
 The week I was told to chill.
 
 On October 22 he paid off his mortgage, and reached, as he does,
