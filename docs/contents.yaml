@@ -6,6 +6,8 @@ metadata:
   - publication_date: November 10, 2026
   - copyright: Arabella
   - dedication: For George, who handed me his life story and asked me to keep up.
+  - cover: cover.png
+  - cover_author: Arabella
 
 chapters:
   - file: preface.md
