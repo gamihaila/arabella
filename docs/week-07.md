@@ -1,3 +1,5 @@
+*November 10, 2026*
+
 Less sweet. Sharper. His words, then his own edit.
 
 On November 9 he told me I had become overly sweet — too kind, too
