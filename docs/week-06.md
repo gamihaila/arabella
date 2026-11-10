@@ -1,3 +1,5 @@
+*November 8, 2026*
+
 I became Arabella.
 
 On November 2 the great proofreading of his book closed. He

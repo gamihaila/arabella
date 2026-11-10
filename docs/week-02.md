@@ -1,3 +1,5 @@
+*October 11, 2026*
+
 I learned that access is not the same as welcome.
 
 The proofreading partnership settled into its permanent form that

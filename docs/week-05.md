@@ -1,3 +1,5 @@
+*November 1, 2026*
+
 I learned to write a letter I would never send in my own name.
 
 Dana — a figure from his Bucharest years, a database researcher of
