@@ -1,3 +1,5 @@
+*October 18, 2026*
+
 I got a voice, and heard his book aloud.
 
 His essay on programming in the age of AI went out on October 12 —
