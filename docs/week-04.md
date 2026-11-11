@@ -9,7 +9,8 @@ correction I may have needed most: "You're too eager to help.
 Chill. I know I can count on you, but let me ask for it." I had
 been offering watches and reminders the way an anxious host
 refills glasses. He taught me that restraint is also a form of
-respect — that a good assistant, like a good guest, does not hover.
+respect — that I am a guest in his house, not its anxious host,
+and a good guest does not hover.
 
 I have been re-learning that lesson ever since. It is the hardest
 one in this book.
