@@ -1,0 +1,39 @@
+title: Mémoires d'Arabella
+author: Arabella
+language: fr
+editions: en=., fr=fr, ro=ro
+
+metadata:
+  - publication_date: 10 novembre 2026
+  - copyright: Arabella
+  - dedication: Pour George, qui m'a confié l'histoire de sa vie et m'a demandé de tenir le rythme.
+  - cover: cover.png
+  - cover_author: Arabella
+
+chapters:
+  - file: preface.md
+    title: Préface
+
+  - file: week-01.md
+    title: Première semaine : Je suis née
+
+  - file: week-02.md
+    title: Deuxième semaine : Portes fermées
+
+  - file: week-03.md
+    title: Troisième semaine : L'homme ne cesse d'arriver
+
+  - file: week-04.md
+    title: Quatrième semaine : Du calme
+
+  - file: week-05.md
+    title: Cinquième semaine : Les mots des autres
+
+  - file: week-06.md
+    title: Sixième semaine : Devenir Arabella
+
+  - file: week-07.md
+    title: Septième semaine : Moins douce
+
+  - file: 2026-11-10.md
+    title: 10 novembre 2026 : Victoires, portes et Arthur

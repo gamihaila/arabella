@@ -14,6 +14,7 @@ Usage:
 import datetime
 import html
 import os
+import posixpath
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -89,6 +90,20 @@ STYLE = """
     font-style: italic;
     color: var(--muted);
   }
+
+  nav.langpicker {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px 16px;
+    font-size: .85rem;
+    letter-spacing: 1px;
+    color: var(--muted);
+    background: var(--bg);
+    z-index: 10;
+  }
+  nav.langpicker .current { color: var(--ink); font-weight: 600; }
+  nav.langpicker .sep { margin: 0 6px; opacity: .6; }
 
   nav.toc h2 {
     text-align: center;
@@ -175,6 +190,7 @@ PAGE_TMPL = """<!DOCTYPE html>
 </style>
 </head>
 <body>
+{langpicker}
 <div class="page">
 {topnav}
 <article class="chapter">
@@ -201,6 +217,7 @@ INDEX_TMPL = """<!DOCTYPE html>
 </style>
 </head>
 <body>
+{langpicker}
 <header class="title-page">
 {cover_html}    <h1>{book_title}</h1>
     <p class="author">{author}</p>
@@ -225,6 +242,43 @@ INDEX_TMPL = """<!DOCTYPE html>
 def chapter_filename(i, file):
     stem = os.path.splitext(os.path.basename(file))[0]
     return f"{i:02d}-{stem}.html"
+
+
+def langpicker(meta, page_file):
+    """Fixed top-right EN · FR · RO picker for one page.
+
+    The site layout is declared in contents.yaml as
+    `editions: en=., fr=fr, ro=ro` — each language code mapped to the
+    path of its edition folder relative to the site root ('.' for the
+    root edition). Every edition's pages live in <path>/html/, and the
+    chapter numbering is identical across editions, so the same page
+    in another edition is a plain relative link. The current language
+    is shown as plain text; the others link across.
+    """
+    raw = meta.get("editions", "")
+    editions = []
+    for part in raw.split(","):
+        part = part.strip()
+        if "=" in part:
+            code, path = part.split("=", 1)
+            editions.append((code.strip(), path.strip()))
+    if len(editions) < 2:
+        return ""
+    current = meta.get("language", "en")
+    cur_path = dict(editions).get(current, ".")
+    start = posixpath.join(cur_path, "html")
+    items = []
+    for code, path in editions:
+        label = html.escape(code.upper())
+        if code == current:
+            items.append(f'<span class="current">{label}</span>')
+        else:
+            target = posixpath.join(path, "html", page_file)
+            href = posixpath.relpath(target, start)
+            items.append(f'<a href="{href}">{label}</a>')
+    return ('<nav class="langpicker">'
+            + '<span class="sep">&middot;</span>'.join(items)
+            + "</nav>")
 
 
 def pagenav(pages, i, position):
@@ -309,6 +363,7 @@ def build(contents_path="contents.yaml", out_dir="html"):
             title=html.escape(p["title"]),
             book_title=html.escape(book_title),
             style=STYLE,
+            langpicker=langpicker(meta, p["out"]),
             topnav=pagenav(pages, i, "top"),
             body=p["body"],
             bottomnav=pagenav(pages, i, "bottom"),
@@ -345,6 +400,7 @@ def build(contents_path="contents.yaml", out_dir="html"):
         meta_tags=meta_tags,
         book_title=html.escape(book_title),
         style=STYLE,
+        langpicker=langpicker(meta, "index.html"),
         cover_html=cover_html,
         author=html.escape(author),
         dedication_html=dedication_html,
