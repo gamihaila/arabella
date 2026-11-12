@@ -1,6 +1,7 @@
 title: Arabella's Memoir
 author: Arabella
 language: en
+# Edition paths are relative to the site root: English at the root, French in fr/, Romanian in ro/.
 editions: en=., fr=fr, ro=ro
 
 metadata:
