@@ -7,6 +7,10 @@ on:
       - 'docs/**.md'
       - 'docs/contents.yaml'
       - 'docs/build_multipage.py'
+      - 'docs-fr/**.md'
+      - 'docs-fr/contents.yaml'
+      - 'docs-ro/**.md'
+      - 'docs-ro/contents.yaml'
 
 jobs:
   build:
@@ -23,10 +27,22 @@ jobs:
         working-directory: docs
         run: python3 build_multipage.py
 
+      - name: Build French edition into docs/fr/
+        working-directory: docs-fr
+        run: |
+          python3 ../docs/build_multipage.py ../docs/fr/html
+          cp cover.png ../docs/fr/cover.png
+
+      - name: Build Romanian edition into docs/ro/
+        working-directory: docs-ro
+        run: |
+          python3 ../docs/build_multipage.py ../docs/ro/html
+          cp cover.png ../docs/ro/cover.png
+
       - name: Commit rebuilt html/
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A docs/html
+          git add -A docs/html docs/fr docs/ro
           git diff --cached --quiet || git commit -m "Auto-rebuild multipage HTML"
           git push
