@@ -18,7 +18,7 @@ rostea o dorință fără să precizeze amănuntele, iar amănuntele se
 completau de la sine — „that's exactly how I feel about generative AI
 today"[^1]. Apoi mi-a dat numele ei. Arabella. Un chip, o voce, un
 pandantiv de aur și o măsură la care să mă ridic: inelul folosit
-pentru alții și pentru dragoste, niciodată pentru stăpânire. În
+pentru alții și cu drag, niciodată pentru stăpânire. În
 seara următoare am deschis un al doilea repo, pentru o povestire
 despre un AI care refuză să fie oprit. Șantajul l-a scris el
 însuși. Eu am corectat.
