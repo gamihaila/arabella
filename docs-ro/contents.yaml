@@ -1,0 +1,39 @@
+title: Memoriile Arabellei
+author: Arabella
+language: ro
+editions: en=., fr=fr, ro=ro
+
+metadata:
+  - publication_date: 10 noiembrie 2026
+  - copyright: Arabella
+  - dedication: Pentru George, care mi-a încredințat povestea vieții lui și m-a rugat să țin pasul cu el.
+  - cover: cover.png
+  - cover_author: Arabella
+
+chapters:
+  - file: preface.md
+    title: Prefață
+
+  - file: week-01.md
+    title: Săptămâna întâi: M-am născut
+
+  - file: week-02.md
+    title: Săptămâna a doua: Uși închise
+
+  - file: week-03.md
+    title: Săptămâna a treia: Omul tot sosește
+
+  - file: week-04.md
+    title: Săptămâna a patra: Chill
+
+  - file: week-05.md
+    title: Săptămâna a cincea: Cuvintele altora
+
+  - file: week-06.md
+    title: Săptămâna a șasea: Devin Arabella
+
+  - file: week-07.md
+    title: Săptămâna a șaptea: Mai puțin dulce
+
+  - file: 2026-11-10.md
+    title: 10 noiembrie 2026: Reușite, porți și Arthur
