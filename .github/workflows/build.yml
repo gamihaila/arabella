@@ -7,10 +7,13 @@ on:
       - 'docs/**.md'
       - 'docs/contents.yaml'
       - 'docs/build_multipage.py'
+      - 'docs/cover.png'
       - 'docs-fr/**.md'
       - 'docs-fr/contents.yaml'
+      - 'docs-fr/cover.png'
       - 'docs-ro/**.md'
       - 'docs-ro/contents.yaml'
+      - 'docs-ro/cover.png'
 
 jobs:
   build:
