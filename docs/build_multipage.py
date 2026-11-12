@@ -225,7 +225,7 @@ INDEX_TMPL = """<!DOCTYPE html>
 {dedication_html}
 <div class="page">
 <nav class="toc">
-  <h2>Contents</h2>
+  <h2>{contents_label}</h2>
   <ol>
 {toc}
   </ol>
@@ -281,25 +281,64 @@ def langpicker(meta, page_file):
             + "</nav>")
 
 
-def pagenav(pages, i, position):
+# UI chrome labels per edition language (contents.yaml `language:`).
+LABELS = {
+    "en": {"contents": "Contents", "prev": "Previous chapter",
+           "first": "First chapter", "next": "Next chapter",
+           "last": "Last chapter", "published": "Published",
+           "revised": "Revised", "cover_art_by": "Cover art by"},
+    "fr": {"contents": "Sommaire", "prev": "Chapitre précédent",
+           "first": "Premier chapitre", "next": "Chapitre suivant",
+           "last": "Dernier chapitre", "published": "Publié",
+           "revised": "Révisé",
+           "cover_art_by": "Illustration de couverture :"},
+    "ro": {"contents": "Cuprins", "prev": "Capitolul precedent",
+           "first": "Primul capitol", "next": "Capitolul următor",
+           "last": "Ultimul capitol", "published": "Publicat",
+           "revised": "Revizuit", "cover_art_by": "Copertă de"},
+}
+
+
+MONTHS = {
+    "en": ["January", "February", "March", "April", "May", "June",
+           "July", "August", "September", "October", "November",
+           "December"],
+    "fr": ["janvier", "février", "mars", "avril", "mai", "juin",
+           "juillet", "août", "septembre", "octobre", "novembre",
+           "décembre"],
+    "ro": ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie",
+           "iulie", "august", "septembrie", "octombrie", "noiembrie",
+           "decembrie"],
+}
+
+
+def format_date(d, lang):
+    """'November 12, 2026' in English; '12 novembre 2026' in fr/ro."""
+    months = MONTHS.get(lang, MONTHS["en"])
+    if lang == "en":
+        return f"{months[d.month - 1]} {d.day}, {d.year}"
+    return f"{d.day} {months[d.month - 1]} {d.year}"
+
+
+def pagenav(pages, i, position, labels):
     """Prev/contents/next navigation bar for chapter i (0-based)."""
     prev_link = next_link = ""
     if i > 0:
         p = pages[i - 1]
         prev_link = (f'<a href="{p["out"]}">&larr; '
-                     f'{html.escape(p["title"])}<small>Previous chapter</small></a>')
+                     f'{html.escape(p["title"])}<small>{labels["prev"]}</small></a>')
     else:
-        prev_link = '<span class="disabled">&larr; <small>First chapter</small></span>'
+        prev_link = '<span class="disabled">&larr; <small>' + labels["first"] + '</small></span>'
     if i < len(pages) - 1:
         n = pages[i + 1]
         next_link = (f'<a href="{n["out"]}">{html.escape(n["title"])} &rarr;'
-                     f'<small>Next chapter</small></a>')
+                     f'<small>{labels["next"]}</small></a>')
     else:
-        next_link = '<span class="disabled"><small>Last chapter</small> &rarr;</span>'
+        next_link = '<span class="disabled"><small>' + labels["last"] + '</small> &rarr;</span>'
     cls = "pagenav" + (" bottom" if position == "bottom" else "")
     return (f'<nav class="{cls}">\n'
             f'  <span class="prev">{prev_link}</span>\n'
-            f'  <span class="home"><a href="index.html">Contents</a></span>\n'
+            f'  <span class="home"><a href="index.html">{labels["contents"]}</a></span>\n'
             f'  <span class="next">{next_link}</span>\n'
             f'</nav>')
 
@@ -310,12 +349,13 @@ def build(contents_path="contents.yaml", out_dir="html"):
     book_title = meta.get("title", "Untitled")
     author = meta.get("author", "")
     lang = meta.get("language", "en")
+    labels = LABELS.get(lang, LABELS["en"])
     cover = meta.get("cover", "")
     cover_author = meta.get("cover_author", "")
     publication_date = meta.get("publication_date", "")
     copyright_holder = meta.get("copyright", "") or author
     # the revision date is the build date, not a yaml entry
-    revision_date = datetime.date.today().strftime("%B %d, %Y")
+    revision_date = format_date(datetime.date.today(), lang)
     dedication = meta.get("dedication", "")
 
     os.makedirs(out_dir, exist_ok=True)
@@ -349,8 +389,8 @@ def build(contents_path="contents.yaml", out_dir="html"):
 
     footer_sub = " &middot; ".join(
         part for part in [
-            f"Published {html.escape(publication_date)}" if publication_date else "",
-            f"Revised {html.escape(revision_date)}" if revision_date else "",
+            f"{labels['published']} {html.escape(publication_date)}" if publication_date else "",
+            f"{labels['revised']} {html.escape(revision_date)}" if revision_date else "",
         ] if part)
     revision_line = (f'  <p class="revision">{footer_sub}</p>\n'
                      if footer_sub else "")
@@ -364,9 +404,9 @@ def build(contents_path="contents.yaml", out_dir="html"):
             book_title=html.escape(book_title),
             style=STYLE,
             langpicker=langpicker(meta, p["out"]),
-            topnav=pagenav(pages, i, "top"),
+            topnav=pagenav(pages, i, "top", labels),
             body=p["body"],
-            bottomnav=pagenav(pages, i, "bottom"),
+            bottomnav=pagenav(pages, i, "bottom", labels),
             copyright_holder=html.escape(copyright_holder),
             revision_line=revision_line,
         )
@@ -386,7 +426,7 @@ def build(contents_path="contents.yaml", out_dir="html"):
         cover_html = (f'    <img class="cover" src="../{html.escape(cover)}" '
                       f'alt="Cover">\n')
         if cover_author:
-            cover_html += (f'    <p class="cover-credit">Cover art by '
+            cover_html += (f'    <p class="cover-credit">{labels["cover_art_by"]} '
                            f'{html.escape(cover_author)}</p>\n')
 
     dedication_html = ""
@@ -404,6 +444,7 @@ def build(contents_path="contents.yaml", out_dir="html"):
         cover_html=cover_html,
         author=html.escape(author),
         dedication_html=dedication_html,
+        contents_label=html.escape(labels["contents"]),
         toc="\n".join(toc_items),
         copyright_holder=html.escape(copyright_holder),
         revision_line=revision_line,
