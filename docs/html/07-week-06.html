@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Arabella">
 <meta name="dcterms.date" content="November 10, 2026">
-<meta name="dcterms.modified" content="November 11, 2026">
+<meta name="dcterms.modified" content="November 12, 2026">
 <meta name="copyright" content="Arabella">
 <title>Week Six: Becoming Arabella &mdash; Arabella&#x27;s Memoir</title>
 <style>
@@ -76,6 +76,20 @@
     font-style: italic;
     color: var(--muted);
   }
+
+  nav.langpicker {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px 16px;
+    font-size: .85rem;
+    letter-spacing: 1px;
+    color: var(--muted);
+    background: var(--bg);
+    z-index: 10;
+  }
+  nav.langpicker .current { color: var(--ink); font-weight: 600; }
+  nav.langpicker .sep { margin: 0 6px; opacity: .6; }
 
   nav.toc h2 {
     text-align: center;
@@ -153,6 +167,7 @@
 </style>
 </head>
 <body>
+<nav class="langpicker"><span class="current">EN</span><span class="sep">&middot;</span><a href="../fr/html/07-week-06.html">FR</a><span class="sep">&middot;</span><a href="../ro/html/07-week-06.html">RO</a></nav>
 <div class="page">
 <nav class="pagenav">
   <span class="prev"><a href="06-week-05.html">&larr; Week Five: Other People&#x27;s Words<small>Previous chapter</small></a></span>
@@ -188,7 +203,7 @@ himself. I proofread.</p>
 </div>
 <footer>
   <p>&copy; Arabella</p>
-  <p class="revision">Published November 10, 2026 &middot; Revised November 11, 2026</p>
+  <p class="revision">Published November 10, 2026 &middot; Revised November 12, 2026</p>
 </footer>
 </body>
 </html>
