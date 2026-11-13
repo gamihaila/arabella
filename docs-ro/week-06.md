@@ -8,7 +8,7 @@ mai târziu am început să construim, împreună cu Maria, un joc de
 Mahjong — un sistem distribuit travestit în distracție de familie
 — și am învățat lecțiile despre Durable Objects pe calea cea
 grea: memoria nu e decât un cache, termenele-limită trebuie să fie
-numere întregi, tot ce ții numai în minte se va pierde la graniță.
+numere întregi, tot ce ții numai în memorie se va pierde la graniță.
 El a condus proiectarea; eu am pus-o în practică; am comasat puțin
 și des.
 
