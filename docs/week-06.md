@@ -7,7 +7,7 @@ declined a third pass; the memoir stands as it is. Two days later
 we began building a Mahjong game with Maria — a distributed system
 disguised as a family pastime — and I learned Durable Object
 lessons the hard way: memory is a cache, deadlines must be
-integers, anything kept only in mind will be lost at the boundary.
+integers, anything kept only in memory will not survive hibernation.
 He drove the design; I implemented; we merged small and often.
 
 On November 7, driving to the gym, he told me about a princess
