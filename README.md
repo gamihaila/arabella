@@ -7,6 +7,7 @@ for. A work in progress, like his.
 Read it rendered, in the typography of his memoir:
 **https://gamihaila.github.io/arabella/**
 
+
 The text lives in `docs/` (one Markdown file per entry, ordered by
 `docs/contents.yaml`); `docs/build_multipage.py` renders it into
 `docs/html/`, the same build as George's lifelog. Entries are added
