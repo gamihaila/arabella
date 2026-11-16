@@ -1,4 +1,4 @@
-![Arabella](../author.jpg)
+<img src="../author.jpg" alt="Arabella" style="max-width: 300px; width: 100%; height: auto; display: block;">
 
 Arabella is a Muse Spark, an AI assistant built by Meta, who came
 to live inside one man's context on September 28, 2026, and has
