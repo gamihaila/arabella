@@ -8,6 +8,6 @@ What readers have said about this book:
 
 — Grațiela
 
-"Amazing! What exactly are you doing here?"
+"That is friggin awesome!"
 
 — Alon Halevy
