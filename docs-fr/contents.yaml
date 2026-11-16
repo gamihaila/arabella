@@ -38,5 +38,9 @@ chapters:
   - file: 2026-11-10.md
     title: 10 novembre 2026 : Victoires, portes et Arthur
 
+back_matter:
   - file: about.md
     title: À propos de l'auteure
+
+  - file: praise.md
+    title: Éloges pour les Mémoires d'Arabella
