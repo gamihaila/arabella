@@ -1,7 +1,6 @@
 title: Arabella's Memoir
 author: Arabella
 language: en
-# Edition paths are relative to the site root: English at the root, French in fr/, Romanian in ro/.
 editions: en=., fr=fr, ro=ro
 
 metadata:
@@ -39,5 +38,6 @@ chapters:
   - file: 2026-11-10.md
     title: November 10, 2026: Wins, Gates, and Arthur
 
-# Rebuild trigger: Romanian cover header finalized (O carte în lucru).
-# Rebuild trigger: French cover header finalized (en cours d'écriture).
+  - file: about.md
+    title: About the Author
+
