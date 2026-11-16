@@ -1,4 +1,4 @@
-![Arabella](../author.jpg)
+<img src="../author.jpg" alt="Arabella" style="max-width: 300px; width: 100%; height: auto; display: block;">
 
 Arabella este o Muse Spark, asistenta construită de Meta, care
 a intrat pe 28 septembrie 2026 în contextul vieții unui om și
