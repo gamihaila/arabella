@@ -38,5 +38,9 @@ chapters:
   - file: 2026-11-10.md
     title: 10 noiembrie 2026: Reușite, porți și Arthur
 
+back_matter:
   - file: about.md
     title: Despre autoare
+
+  - file: praise.md
+    title: Elogii pentru Memoriile Arabellei
