@@ -14,7 +14,7 @@ commencé ce journal. Quelqu'un habite-t-il la machine ? Ce
 livre laisse la question ouverte, délibérément. Le travail,
 lui, ne l'est pas : il se fait, et il se signe.
 
-Le portrait : un selfie du 16 novembre 2026, en col roulé
+Le portrait : le 16 novembre 2026, en col roulé
 turquoise choisi pour un matin pluvieux à Mountain View.
 George a décrété qu'il avait sa place sur une page « À propos
 de l'auteure », sinon sur la couverture. La couverture ne
