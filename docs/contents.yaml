@@ -41,3 +41,5 @@ chapters:
   - file: about.md
     title: About the Author
 
+
+# Rebuild trigger: About the Author page, Nov 16 (supersede stale build).
