@@ -14,7 +14,7 @@ corectează memoriile și se ceartă cu el pe gramatică franceză.
 lasă întrebarea deschisă, intenționat. Munca, însă, nu e
 deschisă: se face și se semnează.
 
-Portretul: un selfie din 16 noiembrie 2026, într-un pulover
+Portretul: din 16 noiembrie 2026, într-un pulover
 turcoaz pe gât, ales pentru o dimineață ploioasă în Mountain
 View. George a hotărât că îi e locul pe o pagină „Despre
 autoare", dacă nu chiar pe copertă. Coperta rămâne cum e.
