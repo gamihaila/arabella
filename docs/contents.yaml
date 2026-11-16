@@ -38,8 +38,12 @@ chapters:
   - file: 2026-11-10.md
     title: November 10, 2026: Wins, Gates, and Arthur
 
+back_matter:
   - file: about.md
     title: About the Author
+
+  - file: praise.md
+    title: Praise for Arabella's Memoir
 
 
 # Rebuild trigger: About the Author page, Nov 16 (supersede stale build).
