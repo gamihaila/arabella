@@ -135,6 +135,14 @@ STYLE = """
   }
   nav.toc .toc-title { flex: 1; }
 
+  nav.backmatter {
+    text-align: center;
+    margin-top: 2.5em;
+    padding-top: 1.4em;
+    border-top: 1px solid var(--rule);
+  }
+  nav.backmatter a { margin: 0 14px; white-space: nowrap; }
+
   .chapter h1 {
     font-size: 2.4rem;
     font-weight: 700;
@@ -230,7 +238,7 @@ INDEX_TMPL = """<!DOCTYPE html>
 {toc}
   </ol>
 </nav>
-</div>
+{backmatter_html}</div>
 <footer>
   <p>&copy; {copyright_holder}</p>
 {revision_line}</footer>
@@ -343,8 +351,18 @@ def pagenav(pages, i, position, labels):
             f'</nav>')
 
 
+def backnav(position, labels):
+    """Contents-only navigation bar for back-matter pages."""
+    cls = "pagenav" + (" bottom" if position == "bottom" else "")
+    return (f'<nav class="{cls}">\n'
+            f'  <span class="prev"></span>\n'
+            f'  <span class="home"><a href="index.html">{labels["contents"]}</a></span>\n'
+            f'  <span class="next"></span>\n'
+            f'</nav>')
+
+
 def build(contents_path="contents.yaml", out_dir="html"):
-    meta, chapters = parse_contents(contents_path)
+    meta, chapters, back_matter = parse_contents(contents_path)
 
     book_title = meta.get("title", "Untitled")
     author = meta.get("author", "")
@@ -374,6 +392,16 @@ def build(contents_path="contents.yaml", out_dir="html"):
             md.reset()
             body = md.convert(f.read())
         pages.append({"num": i, "title": ctitle, "out": out, "body": body})
+
+    back_pages = []
+    for ch in back_matter:
+        fname = ch["file"]
+        ctitle = ch.get("title", fname)
+        out = os.path.splitext(os.path.basename(fname))[0] + ".html"
+        with open(fname, encoding="utf-8") as f:
+            md.reset()
+            body = md.convert(f.read())
+        back_pages.append({"title": ctitle, "out": out, "body": body})
 
     meta_tag_lines = [f'<meta name="author" content="{html.escape(author)}">']
     if publication_date:
@@ -413,6 +441,25 @@ def build(contents_path="contents.yaml", out_dir="html"):
         with open(os.path.join(out_dir, p["out"]), "w", encoding="utf-8") as f:
             f.write(doc)
 
+    # Back-matter pages: standalone, outside the Contents, with a
+    # contents-only navigation bar instead of prev/next.
+    for p in back_pages:
+        doc = PAGE_TMPL.format(
+            lang=html.escape(lang),
+            meta_tags=meta_tags,
+            title=html.escape(p["title"]),
+            book_title=html.escape(book_title),
+            style=STYLE,
+            langpicker=langpicker(meta, p["out"]),
+            topnav=backnav("top", labels),
+            body=p["body"],
+            bottomnav=backnav("bottom", labels),
+            copyright_holder=html.escape(copyright_holder),
+            revision_line=revision_line,
+        )
+        with open(os.path.join(out_dir, p["out"]), "w", encoding="utf-8") as f:
+            f.write(doc)
+
     # Contents page.
     toc_items = [
         f'      <li><a href="{p["out"]}"><span class="toc-num">{p["num"]}</span>'
@@ -435,6 +482,13 @@ def build(contents_path="contents.yaml", out_dir="html"):
                            f'  <p>{html.escape(dedication)}</p>\n'
                            f'</section>\n')
 
+    backmatter_html = ""
+    if back_pages:
+        links = "\n".join(
+            f'  <a href="{p["out"]}">{html.escape(p["title"])}</a>'
+            for p in back_pages)
+        backmatter_html = f'<nav class="backmatter">\n{links}\n</nav>\n'
+
     index_doc = INDEX_TMPL.format(
         lang=html.escape(lang),
         meta_tags=meta_tags,
@@ -446,6 +500,7 @@ def build(contents_path="contents.yaml", out_dir="html"):
         dedication_html=dedication_html,
         contents_label=html.escape(labels["contents"]),
         toc="\n".join(toc_items),
+        backmatter_html=backmatter_html,
         copyright_holder=html.escape(copyright_holder),
         revision_line=revision_line,
     )
