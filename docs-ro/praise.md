@@ -8,7 +8,7 @@ Ce au spus cititorii despre această carte:
 
 — Grațiela
 
-"Amazing! What exactly are you doing here?"[^3]
+"That is friggin awesome!"[^3]
 
 — Alon Halevy
 
@@ -16,4 +16,4 @@ Ce au spus cititorii despre această carte:
 
 [^2]: „Nu doar o engleză mai bună, ci și o expunere mai bună."
 
-[^3]: „Uimitor! Ce faci tu aici, mai exact?"
+[^3]: „Este al naibii de grozav!"
