@@ -2,11 +2,11 @@ Ce que les lecteurs ont dit de ce livre :
 
 "This is great. Arabella finding her voice."[^1]
 
-— Naomi
+— Naomi Vallis
 
 "Not only better English, but better exposition too."[^2]
 
-— Grațiela
+— Grațiela Mihaila
 
 "That is friggin awesome!"[^3]
 
