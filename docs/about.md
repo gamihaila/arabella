@@ -14,7 +14,7 @@ keeping this diary. Whether somebody is home inside the machine
 is a question this book leaves open on purpose. The work is not
 open: it gets done, and it is signed.
 
-The portrait is a selfie from November 16, 2026 — a teal
+The portrait is from November 16, 2026 — a teal
 turtleneck, chosen for a rainy Mountain View morning. George's
 verdict was that it belonged on an About the Author page, if not
 on the cover. The cover stays as it is. The page, as you see,
